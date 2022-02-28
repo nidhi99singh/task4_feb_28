@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 27, 2022 11:13:59 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="iot83" name="organisation.Depart" optimistic-lock="version" table="depart">
+    <id name="DId" type="int">
+      <column name="d_id"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="DName" type="string">
+      <column length="20" name="d_name"/>
+    </property>
+    <property name="city" type="string">
+      <column length="20" name="city"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="employees" table="employee">
+      <key>
+        <column name="d_id"/>
+      </key>
+      <one-to-many class="organisation.Employee"/>
+    </set>
+  </class>
+</hibernate-mapping>
